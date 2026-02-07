@@ -1,0 +1,11 @@
+--- Estadísticas --- 
+Archivo: TC7.txt
+Cantidad de elementos: 12767
+Media: 2.474673954997149e+20
+Mediana: 2.4664097307429e+20
+Moda: N/A
+Varianza Poblacional: 2.0910793147136484e+40
+Desv Estandar Poblacional: 1.4460564700984703e+20
+Tiempo de ejecución: 0.015330 segundos
+-------------------- 
+

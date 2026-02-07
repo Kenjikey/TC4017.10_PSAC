@@ -1,0 +1,11 @@
+--- Estadísticas --- 
+Archivo: TC5.txt
+Cantidad de elementos: 307
+Media: 241.49511400651465
+Mediana: 241.0
+Moda: [393.0, 19.0, 368.0, 290.0, 56.0, 11.0, 76.0, 215.0, 64.0, 375.0, 466.0, 277.0, 211.0, 46.0, 278.0, 170.0, 166.0, 96.0, 268.0]
+Varianza Poblacional: 21160.021963097748
+Desv Estandar Poblacional: 145.46484786056646
+Tiempo de ejecución: 0.003155 segundos
+-------------------- 
+
