@@ -1,0 +1,6 @@
+----------------------------------------
+REPORTE DE VENTAS PARA: TC2.Sales.json
+----------------------------------------
+Total de ventas calculadas: $166,568.23
+Tiempo de ejecución: 0.0186 segundos
+----------------------------------------

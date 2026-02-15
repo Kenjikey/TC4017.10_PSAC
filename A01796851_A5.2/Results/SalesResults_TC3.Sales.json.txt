@@ -1,0 +1,6 @@
+----------------------------------------
+REPORTE DE VENTAS PARA: TC3.Sales.json
+----------------------------------------
+Total de ventas calculadas: $165,235.37
+Tiempo de ejecución: 0.0220 segundos
+----------------------------------------
