@@ -15,6 +15,8 @@ class Hotel:
         self.name = name
         self.location = location
         self.rooms = rooms
+        # Inicializamos disponibilidad internamente
+        self.a_rooms = rooms
 
     @classmethod
     def load_hotels(cls):
@@ -36,6 +38,20 @@ class Hotel:
                 json.dump(hotels, file, indent=4)
         except IOError as e:
             print(f"Error al guardar datos: {e}")
+
+    def reserve_room(self):
+        """Método de instancia para reservar. Arregla el AttributeError."""
+        if self.a_rooms > 0:
+            self.a_rooms -= 1
+            return True
+        return False
+
+    def cancel_reservation(self):
+        """Método de instancia para cancelar. Arregla el AttributeError."""
+        if self.a_rooms < self.rooms:
+            self.a_rooms += 1
+            return True
+        return False
 
     @classmethod
     def create_hotel(cls, hotel_id, name, location, rooms):
@@ -61,16 +77,14 @@ class Hotel:
         updated_hotels = [h for h in hotels if h['hotel_id'] != hotel_id]
         cls.save_hotels(updated_hotels)
 
-    @classmethod
-    def display_info(cls, self):
+    def display_info(self):
         """Muestra la información detallada del hotel en consola."""
         info = (f"ID: {self.hotel_id} | Hotel: {self.name} | "
                 f"Ubicación: {self.location} | "
                 f"Habitaciones: {self.rooms}")
         print(info)
 
-    @classmethod
-    def modify_hotel(cls, self, name=None, location=None, rooms=None):
+    def modify_hotel(self, name=None, location=None, rooms=None):
         """Modifica los atributos del hotel y actualiza el archivo JSON."""
         if name:
             self.name = name

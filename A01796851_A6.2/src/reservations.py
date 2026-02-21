@@ -65,11 +65,16 @@ class Reservation:
             hotel_id=hotel_data['hotel_id'],
             name=hotel_data['name'],
             location=hotel_data['location'],
-            rooms=hotel_data['rooms'],
-            a_rooms=hotel_data['a_rooms']
+            rooms=hotel_data['rooms']
         )
 
+        # Asignamos manualmente la disponibilidad guardada
+        temp_hotel.a_rooms = hotel_data.get('a_rooms', hotel_data['rooms'])
+
         if temp_hotel.reserve_room():
+            # Actualizar el dato en la lista y guardar
+            hotel_data['a_rooms'] = temp_hotel.a_rooms
+            Hotel.save_hotels(hotels_data)
             reservations = cls.load_reservations()
             reservations.append({
                 'reservation_id': res_id,
@@ -107,8 +112,9 @@ class Reservation:
                 hotel_data['name'],
                 hotel_data['location'],
                 hotel_data['rooms'],
-                hotel_data['a_rooms']
             )
+            # La disponibilidad se asigna después, no en el constructor
+            temp_hotel.a_rooms = hotel_data.get('a_rooms', hotel_data['rooms'])
             temp_hotel.cancel_reservation()
 
         # 2. Eliminar del archivo de reservaciones
