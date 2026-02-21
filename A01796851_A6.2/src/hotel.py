@@ -1,5 +1,9 @@
+"""
+ Actividad 6.2. Ejercicio de programación 3: Sistema de Reservaciones
+"""
 import json
 import os
+
 
 class Hotel:
     """Clase para gestionar la información de los hoteles."""
@@ -41,7 +45,7 @@ class Hotel:
         if any(h['hotel_id'] == hotel_id for h in hotels):
             print(f"Error: El hotel con ID {hotel_id} ya existe.")
             return
-        
+
         hotels.append({
             'hotel_id': hotel_id,
             'name': name,
@@ -56,3 +60,33 @@ class Hotel:
         hotels = cls.load_hotels()
         updated_hotels = [h for h in hotels if h['hotel_id'] != hotel_id]
         cls.save_hotels(updated_hotels)
+
+    @classmethod
+    def display_info(cls, self):
+        """Muestra la información detallada del hotel en consola."""
+        info = (f"ID: {self.hotel_id} | Hotel: {self.name} | "
+                f"Ubicación: {self.location} | "
+                f"Habitaciones: {self.rooms}")
+        print(info)
+
+    @classmethod
+    def modify_hotel(cls, self, name=None, location=None, rooms=None):
+        """Modifica los atributos del hotel y actualiza el archivo JSON."""
+        if name:
+            self.name = name
+        if location:
+            self.location = location
+        if rooms:
+            self.rooms = rooms
+
+        # Después de modificar el objeto, actualizamos la base de datos
+        hotels = self.load_hotels()
+        for hotel in hotels:
+            if hotel['hotel_id'] == self.hotel_id:
+                hotel.update({
+                    'name': self.name,
+                    'location': self.location,
+                    'rooms': self.rooms
+                })
+        self.save_hotels(hotels)
+        print(f"Hotel {self.hotel_id} modificado exitosamente.")
